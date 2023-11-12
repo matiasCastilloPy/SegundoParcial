@@ -32,17 +32,40 @@ def isMutant(dna:list):
     
     secuenciasEncontradas = 0
 
-    secuenciasEncontradas += verificarFilas(dna, secuenciasEncontradas)
+    print("Analizando Filas...")
+
+    secuenciasEncontradas = verificarFilas(dna, secuenciasEncontradas)
+
+    print(f"Secuencias encontradas en total: {secuenciasEncontradas}")
 
     if (secuenciasEncontradas >= 2):
         return True
 
-    secuenciasEncontradas += verificarColumnas(dna, secuenciasEncontradas)
+    print("Analizando Columnas...")
+
+    secuenciasEncontradas = verificarColumnas(dna, secuenciasEncontradas)
+
+    print(f"Secuencias encontradas en total: {secuenciasEncontradas}")
 
     if (secuenciasEncontradas >= 2):
         return True
+
+    print("Analizando Diagonales...")
     
-    secuenciasEncontradas += verificarDiagonales(dna, secuenciasEncontradas)
+    secuenciasEncontradas = verificarDiagonales(dna, secuenciasEncontradas)
+
+    print(f"Secuencias encontradas en total: {secuenciasEncontradas}")
+
+    if (secuenciasEncontradas >= 2):
+        return True
+
+    print("Analizando Diagonales Inversas...")
+    
+    secuenciasEncontradas = verificarDiagonalesInversas(dna, secuenciasEncontradas)
+
+    print(f"Secuencias encontradas en total: {secuenciasEncontradas}")
+
+    print("--------------------RESULTADO----------------------")
 
     if (secuenciasEncontradas >= 2):
         return True
@@ -92,7 +115,7 @@ def verificarDiagonales(dna:list, secuenciasEncontradas):
 
             if (dna[i+j][j] == dna[i+j+3][j+3]):
                 if (dna[i+j][j] == dna[i+j+1][j+1] == dna[i+j+2][j+2]):
-
+                    
                     secuenciasEncontradas += 1
                     break
 
@@ -114,15 +137,36 @@ def verificarDiagonales(dna:list, secuenciasEncontradas):
 
     return secuenciasEncontradas
 
+def verificarDiagonalesInversas(dna:list, secuenciasEncontradas):
 
-#dna = ingresarDatos()
+    for i in range(int(len(dna)/2)):
+        for j in range(int(len(dna))-1, (int(len(dna)/2)+1)-i, -1):
 
-dna = ["ATGCGA",
-       "CAGGAC",
-       "TCATGT",
-       "AGTAGG",
-       "CCTCTA",
-       "TCACCG"]
+            if (dna[i][j] == dna[i+3][j-3]):
+                if (dna[i][j] == dna[i+1][j-1] == dna[i+2][j-2]):
+
+                    secuenciasEncontradas += 1
+                    break
+        
+        if secuenciasEncontradas >= 2:
+            return secuenciasEncontradas
+    
+    for i in range(int(len(dna)-2), int(len(dna)/2)-1 , -1):
+        for j in range(i-2):
+
+            if (dna[j][i-j] == dna[j+3][i-j-3]):
+                if (dna[j][i-j] == dna[j+1][i-j-1] == dna[j+2][i-j-2]):
+                    
+                    secuenciasEncontradas += 1
+                    break
+        
+        if secuenciasEncontradas >= 2:
+            return secuenciasEncontradas
+    
+    return secuenciasEncontradas
+
+
+dna = ingresarDatos()
 
 if (isMutant(dna)):
     print(f"La secuencia corresponde a un MUTANTE!")
