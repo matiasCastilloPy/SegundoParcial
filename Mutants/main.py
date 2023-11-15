@@ -65,8 +65,6 @@ def isMutant(dna:list):
 
     print(f"Secuencias encontradas en total: {secuenciasEncontradas}")
 
-    print("--------------------RESULTADO----------------------")
-
     if (secuenciasEncontradas >= 2):
         return True
     
@@ -169,6 +167,8 @@ def verificarDiagonalesInversas(dna:list, secuenciasEncontradas):
 dna = ingresarDatos()
 
 if (isMutant(dna)):
+    print("--------------------RESULTADO----------------------")
     print(f"La secuencia corresponde a un MUTANTE!")
 else:
+    print("--------------------RESULTADO----------------------")
     print(f"La secuencia NO corresponde a un mutante")
