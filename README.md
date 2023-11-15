@@ -13,3 +13,11 @@ El proyecto se basa en descubrir en una matriz 6x6 compuesta por el ADN  de huma
 3. Necesita tener instalado en su PC Python 3.10 o superior
 4. Una vez abierta la carpeta dirigirse al archivo main.py en la carpeta Mutants y ejecutarlo
 5. Seguir los pasos e indicaciones que se muestran en la consola durante la ejecucion
+
+## Casos de Prueba
+
+Mutante:"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"
+
+No Mutante(con una secuencia de 4 letras iguales): "TTGCGA","AAGTGC","TTATTT","AGATGG","GCGTCA","TCACTG"
+
+No Mutante(sin secuencias de 4 letras iguales):"ATGCGA","CAGTGC","TTATTT","AGACGG","GCGTCA","TCACTG"
